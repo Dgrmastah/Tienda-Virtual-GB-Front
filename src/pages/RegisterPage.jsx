@@ -3,6 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import './RegisterPage.css';
 
+
+const BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:4000';
+
 const RegisterPage = () => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
@@ -13,7 +16,7 @@ const RegisterPage = () => {
         e.preventDefault();
 
         try {
-            const res = await fetch('http://localhost:4000/api/auth/register', {
+            const res = await fetch(`${BASE_URL}/api/auth/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

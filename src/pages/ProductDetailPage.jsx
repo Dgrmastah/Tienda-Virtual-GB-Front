@@ -4,7 +4,7 @@ import { useCart } from "../context/cartContext";
 import { useAuth } from "../context/authContext";
 import { toast } from "react-toastify";
 
-// Importa el archivo CSS
+
 import "./ProductDetailPage.css";
 
 const ProductDetailPage = () => {
