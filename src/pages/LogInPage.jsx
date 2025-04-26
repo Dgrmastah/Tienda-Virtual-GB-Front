@@ -14,7 +14,8 @@ const LoginPage = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch('http://localhost:4000/api/auth/login', {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000'; // Usa la variable de entorno
+      const res = await fetch(`${API_URL}/api/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -22,17 +23,17 @@ const LoginPage = () => {
         body: JSON.stringify({ username, password }),
       });
 
-      const data = await res.json();
-
       if (!res.ok) {
-        toast.error(data.message || 'Error al iniciar sesión');
+        const errorData = await res.json();
+        toast.error(errorData.message || 'Error al iniciar sesión');
         return;
       }
 
+      const data = await res.json();
       const userData = { username };
       login(data.token, userData);
       toast.success('Inicio de sesión exitoso');
-      navigate('/');
+      navigate('/'); // Redirige a la página principal después de iniciar sesión
     } catch (err) {
       console.error('Error de red o del servidor:', err);
       toast.error('Error al conectar con el servidor');
@@ -40,9 +41,9 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="register-container">
-      <h2 className="register-title">Iniciar sesión</h2>
-      <form onSubmit={handleSubmit} className="register-form">
+    <div className="login-container">
+      <h2 className="login-title">Iniciar sesión</h2>
+      <form onSubmit={handleSubmit} className="login-form">
         <div className="form-group">
           <label className="form-label">Usuario:</label>
           <input
@@ -63,8 +64,8 @@ const LoginPage = () => {
             required
           />
         </div>
-        <button type="submit" className="register-button">Ingresar</button>
-        <div className="register-link">
+        <button type="submit" className="login-button">Ingresar</button>
+        <div className="login-link">
           <p>¿No tienes una cuenta? <a href="/register">Regístrate aquí</a></p>
         </div>
       </form>

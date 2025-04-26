@@ -13,7 +13,8 @@ const RegisterPage = () => {
         e.preventDefault();
 
         try {
-            const res = await fetch('http://localhost:4000/api/auth/register', {
+            const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000'; // Usa la variable de entorno para la URL
+            const res = await fetch(`${API_URL}/api/auth/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -58,7 +59,7 @@ const RegisterPage = () => {
                     />
                 </div>
                 <div className="form-group">
-                    <label className="form-label">Password:</label>
+                    <label className="form-label">Contraseña:</label>
                     <input
                         className="form-input"
                         type="password"
