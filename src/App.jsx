@@ -3,13 +3,13 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
 
-import HomePage from './pages/HomePage';
-import LoginPage from './pages/LoginPage';
+import HomePage from './pages/HomePage.jsx';
+import LoginPage from './pages/LoginPage.jsx';
 import CarPage from './pages/CartPage';
 import Layout from './components/Layout';
-import RegisterPage from './pages/RegisterPage';
+import RegisterPage from './pages/RegisterPage.jsx';
 import CheckoutForm from './pages/CheckoutPage';
-import ProductDetailPage from './pages/ProductDetailPage';
+import ProductDetailPage from './pages/ProductDetailPage.jsx';
 
 
 
