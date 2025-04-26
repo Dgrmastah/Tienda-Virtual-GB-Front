@@ -1,17 +1,15 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'; 
+import 'react-toastify/dist/ReactToastify.css';
 
 import HomePage from './pages/HomePage.jsx';
 import LoginPage from './pages/LoginPage.jsx';
-import CarPage from './pages/CartPage';
-import Layout from './components/Layout';
+import CarPage from './pages/CartPage.jsx';
+import Layout from './components/Layout.jsx';
 import RegisterPage from './pages/RegisterPage.jsx';
-import CheckoutForm from './pages/CheckoutPage';
+import CheckoutForm from './pages/CheckoutPage.jsx';
 import ProductDetailPage from './pages/ProductDetailPage.jsx';
-
-
 
 const App = () => {
   return (
@@ -21,9 +19,9 @@ const App = () => {
           <Route index element={<HomePage />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="carrito" element={<CarPage />} />
-          <Route path="register" element={<RegisterPage/>}/>
-          <Route path="/producto/:id" element={<ProductDetailPage/>}/>
-          <Route path='terminar-compra' element={<CheckoutForm/>}/>
+          <Route path="register" element={<RegisterPage />} />
+          <Route path="producto/:id" element={<ProductDetailPage />} />
+          <Route path="terminar-compra" element={<CheckoutForm />} />
         </Route>
       </Routes>
       <ToastContainer position="bottom-right" autoClose={2000} />
