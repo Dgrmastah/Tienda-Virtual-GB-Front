@@ -13,7 +13,7 @@ const RegisterPage = () => {
         e.preventDefault();
 
         try {
-            const res = await fetch('http://localhost:4000/api/auth/register', {
+            const res = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/register`, {  // Usa la variable de entorno
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
