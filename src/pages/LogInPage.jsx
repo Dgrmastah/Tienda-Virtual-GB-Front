@@ -14,7 +14,7 @@ const LoginPage = () => {
     e.preventDefault();
 
     try {
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000'; // Usa la variable de entorno
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000'; 
       const res = await fetch(`${API_URL}/api/auth/login`, {
         method: 'POST',
         headers: {
@@ -33,7 +33,7 @@ const LoginPage = () => {
       const userData = { username };
       login(data.token, userData);
       toast.success('Inicio de sesión exitoso');
-      navigate('/'); // Redirige a la página principal después de iniciar sesión
+      navigate('/'); 
     } catch (err) {
       console.error('Error de red o del servidor:', err);
       toast.error('Error al conectar con el servidor');

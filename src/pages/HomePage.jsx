@@ -5,21 +5,21 @@ import './HomePage.css';
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true); // Agregado para manejar el estado de carga
-  const [error, setError] = useState(null); // Agregado para manejar errores
+  const [loading, setLoading] = useState(true); 
+  const [error, setError] = useState(null); 
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        // Usa la variable de entorno para la URL del backend
+    
         const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000';
         const response = await axios.get(`${API_URL}/api/products`);
         setProducts(response.data);
       } catch (err) {
-        setError('Hubo un error al traer los productos.'); // Actualiza el estado de error
+        setError('Hubo un error al traer los productos.'); 
         console.error('Error al traer los productos:', err);
       } finally {
-        setLoading(false); // Cambia el estado de carga al finalizar la petición
+        setLoading(false);
       }
     };
 
@@ -29,8 +29,8 @@ const HomePage = () => {
   return (
     <div className="home-container">
       <h1 className="title">Tienda Online GB</h1>
-      {loading && <p>Cargando productos...</p>} {/* Mensaje de carga */}
-      {error && <p className="error-message">{error}</p>} {/* Muestra un error si existe */}
+      {loading && <p>Cargando productos...</p>} 
+      {error && <p className="error-message">{error}</p>} 
 
       <div className="product-grid">
         {products.length > 0 ? (
@@ -40,7 +40,7 @@ const HomePage = () => {
             </div>
           ))
         ) : (
-          <p>No hay productos disponibles</p> // Mensaje si no hay productos
+          <p>No hay productos disponibles</p> 
         )}
       </div>
     </div>

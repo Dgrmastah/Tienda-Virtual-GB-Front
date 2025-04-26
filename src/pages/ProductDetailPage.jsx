@@ -3,8 +3,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useCart } from "../context/cartContext";
 import { useAuth } from "../context/authContext";
 import { toast } from "react-toastify";
-
-
 import "./ProductDetailPage.css";
 
 const ProductDetailPage = () => {
@@ -18,11 +16,16 @@ const ProductDetailPage = () => {
     useEffect(() => {
         const fetchProduct = async () => {
             try {
-                const res = await fetch(`http://localhost:4000/api/products/${id}`);
+                const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000'; 
+                const res = await fetch(`${API_URL}/api/products/${id}`);
+                if (!res.ok) {
+                    throw new Error('No se pudo cargar el producto');
+                }
                 const data = await res.json();
                 setProduct(data);
             } catch (error) {
                 console.error("Error al cargar el producto:", error);
+                toast.error('Error al cargar el producto');
             } finally {
                 setLoading(false);
             }

@@ -13,7 +13,7 @@ const RegisterPage = () => {
         e.preventDefault();
 
         try {
-            const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000'; // Usa la variable de entorno para la URL
+            const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000'; 
             const res = await fetch(`${API_URL}/api/auth/register`, {
                 method: 'POST',
                 headers: {
