@@ -4,9 +4,6 @@ import { useAuth } from '../context/authContext';
 import { toast } from 'react-toastify';
 import './LoginPage.css';
 
-
-const BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:4000';
-
 const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -17,7 +14,7 @@ const LoginPage = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch(`${BASE_URL}/api/auth/login`, {
+      const res = await fetch('http://localhost:4000/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

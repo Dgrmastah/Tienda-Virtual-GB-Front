@@ -7,9 +7,7 @@ const HomePage = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:4000';
-        
-        axios.get(`${apiUrl}/api/products`)
+        axios.get('http://localhost:4000/api/products')
             .then(response => {
                 setProducts(response.data); 
             })
